@@ -1,218 +1,138 @@
-\# Flash Flood Prediction System - LSTM Neural Networks
+# Flash Flood Prediction System - LSTM Neural Networks
 
+**Deep Learning for Real-Time Hydrological Forecasting**
 
+## Overview
 
-\*\*Advanced Machine Learning for Real-Time Hydrological Forecasting\*\*
+A deep learning system for flash flood prediction using LSTM neural networks with 2-hour prediction horizons. The system integrates meteorological data from multiple sources and provides real-time forecasting capabilities with 10-minute temporal resolution.
 
+**Tech Stack:** Python, PyTorch, Deep Learning, Time Series Analysis, REST APIs, GIS Analytics
 
+## Key Features
 
-\## Overview
+- End-to-end ML pipeline from data collection to model inference
+- Custom hydrological loss functions (NSE, KGE, NSE*) for time series prediction
+- Real-time data integration from Israeli Meteorological Service API
+- Multi-sensor spatial data fusion with distance-weighted rainfall aggregation
+- Production-ready inference pipeline with automated error handling
 
+## Technical Architecture
 
+### Deep Learning Models
+- Multi-layer LSTM networks with configurable hidden dimensions
+- Sequence-to-sequence modeling (24-hour input → 2-hour forecast)
+- Custom evaluation metrics for hydrological performance assessment
+- Hyperparameter optimization through systematic grid search
 
-Developed a production-ready deep learning system for flash flood prediction using state-of-the-art LSTM neural networks. Successfully deployed real-time forecasting capabilities with 2-hour prediction horizons, integrating multi-source meteorological data through automated API pipelines and advanced spatial analytics.
+### Data Processing Pipeline
+- Automated data collection from meteorological APIs
+- Time series preprocessing with missing data imputation
+- Spatial analytics for optimal sensor network configuration
+- Feature engineering incorporating rainfall patterns across 5-station networks
 
+### Model Training & Evaluation
+- Time-based train/validation splits to prevent data leakage
+- Nash-Sutcliffe Efficiency and Kling-Gupta Efficiency metrics
+- Comparison against persistence baselines
+- Cross-validation framework for robust performance estimation
 
-
-\*\*Tech Stack:\*\* Python, PyTorch, Deep Learning, Time Series Analysis, REST APIs, GIS, Statistical Modeling
-
-
-
-\## Key Achievements
-
-
-
-\- \*\*Built end-to-end ML pipeline\*\* from data ingestion to model deployment with 10-minute temporal resolution
-
-\- \*\*Implemented custom loss functions\*\* (NSE, KGE, NSE\*) optimized for hydrological time series prediction
-
-\- \*\*Achieved superior performance\*\* vs traditional physics-based models through systematic hyperparameter optimization
-
-\- \*\*Designed scalable architecture\*\* supporting real-time inference with automated data collection from Israeli Meteorological Service API
-
-\- \*\*Applied advanced feature engineering\*\* with spatial-temporal data fusion from multiple sensor networks
-
-
-
-\## Technical Innovation
-
-
-
-\### Deep Learning Architecture
-
-\- \*\*Multi-layer LSTM networks\*\* with dropout regularization and custom activation functions
-
-\- \*\*Sequence-to-sequence modeling\*\* (12-hour input window → 2-hour prediction horizon)
-
-\- \*\*Ensemble forecasting\*\* with uncertainty quantification and confidence intervals
-
-\- \*\*Grid search optimization\*\* across 125+ hyperparameter combinations
-
-
-
-\### Data Engineering Pipeline
-
-\- \*\*Real-time API integration\*\* with automated data validation and quality control
-
-\- \*\*Spatial analytics\*\* using ArcGIS for optimal sensor network configuration
-
-\- \*\*Time series preprocessing\*\* with advanced interpolation and missing data imputation
-
-\- \*\*Feature engineering\*\* incorporating distance-weighted rainfall aggregation across 5-station networks
-
-
-
-\### Production Deployment
-
-\- \*\*Scalable inference pipeline\*\* supporting real-time predictions with sub-second latency
-
-\- \*\*Robust error handling\*\* with automated failover and data recovery mechanisms
-
-\- \*\*Model versioning\*\* and A/B testing framework for continuous improvement
-
-\- \*\*Performance monitoring\*\* with comprehensive logging and alerting systems
-
-
-
-\## Business Impact
-
-
-
-\*\*Problem Solved:\*\* Traditional flood forecasting models suffer from complex parameter estimation and poor generalization. Developed ML-first approach achieving superior accuracy for emergency response applications.
-
-
-
-\*\*Solution Value:\*\* 
-
-\- Enables 2-hour advance warning for flood events
-
-\- Reduces false positive rates through sophisticated pattern recognition
-
-\- Supports critical infrastructure protection and emergency management
-
-\- Scales across multiple geographic regions with minimal reconfiguration
-
-
-
-\## Core Technologies
-
-
-
-\*\*Machine Learning:\*\* PyTorch, Deep Learning, Neural Networks, Time Series Forecasting, Feature Engineering, Model Optimization
-
-
-
-\*\*Data Engineering:\*\* REST APIs, Data Pipelines, ETL Processing, Real-time Analytics, Data Validation, Quality Control
-
-
-
-\*\*Infrastructure:\*\* Python, Pandas, NumPy, SciPy, Matplotlib, Git, Automated Testing, Production Deployment
-
-
-
-\*\*Domain Expertise:\*\* Hydrology, Meteorology, GIS, Statistical Analysis, Signal Processing, Spatial Analytics
-
-
-
-\## Architecture Highlights
-
-
-
-\### Model Performance
-
-\- \*\*Systematic hyperparameter tuning\*\* using grid search across hidden dimensions, layer depth, and regularization
-
-\- \*\*Advanced evaluation metrics\*\* including Nash-Sutcliffe Efficiency and Kling-Gupta Efficiency
-
-\- \*\*Robust validation framework\*\* with time-based train/test splits and cross-validation
-
-\- \*\*Benchmark comparisons\*\* against persistence models and industry standards
-
-
-
-\### Data Integration
-
-\- \*\*Multi-source data fusion\*\* combining rainfall sensors, river gauges, and meteorological stations
-
-\- \*\*Spatial optimization\*\* using GIS analytics for sensor network design
-
-\- \*\*Temporal alignment\*\* with sub-minute precision across heterogeneous data sources
-
-\- \*\*Quality assurance\*\* through statistical validation and outlier detection
-
-
-
-\### Operational Excellence
-
-\- \*\*Production monitoring\*\* with comprehensive performance tracking and alerting
-
-\- \*\*Automated deployment\*\* with CI/CD pipelines and version control
-
-\- \*\*Documentation standards\*\* following industry best practices
-
-\- \*\*Code quality\*\* with unit testing, integration testing, and performance profiling
-
-
-
-\## Results
-
-
-
-Delivered production-grade flood prediction system demonstrating:
-
-\- \*\*High accuracy\*\* on validation datasets with strong generalization across temporal periods
-
-\- \*\*Operational reliability\*\* through robust error handling and automated recovery
-
-\- \*\*Scalable performance\*\* supporting real-time inference with minimal computational overhead
-
-\- \*\*Industry impact\*\* enabling improved emergency response and infrastructure protection
-
-
-
-\## Project Structure
-
-
+## Project Structure
 
 ```
-
-├── LSTM\_model.py              # Core neural network architecture \& training
-
-├── get\_data\_from\_IMS.py       # API integration \& data processing pipeline
-
-├── data/                      # Production datasets \& model artifacts
-
-├── models/                    # Trained model checkpoints \& configurations
-
-└── docs/                      # Technical documentation \& methodology
-
+flood_prediction/
+├── scripts/
+│   ├── train_model.py          # Main training script
+│   ├── predict.py              # Model inference and evaluation
+│   └── download_data.py        # Data collection from APIs
+├── src/
+│   ├── model.py                # LSTM architecture and evaluation metrics
+│   ├── training.py             # Training loops and data preparation
+│   ├── config.py               # System configuration parameters
+│   └── utils.py                # Visualization and helper functions
+├── data/
+│   └── dfs_per_gauge_full_data/    # Time series data per gauge station
+├── models/                     # Trained model checkpoints
+└── README.md
 ```
 
+## Getting Started
 
+### Prerequisites
+```bash
+pip install torch torchvision torchaudio
+pip install pandas numpy scipy matplotlib
+```
 
-\## Skills Demonstrated
+### Training a Model
+```bash
+# Train LSTM model for gauge station 7105
+python scripts/train_model.py
 
+# Download fresh data from meteorological service
+python scripts/download_data.py
+```
 
+### Running Predictions
+```bash
+# Evaluate trained model performance
+python scripts/predict.py
+```
 
-\*\*Technical Leadership:\*\* End-to-end ML project delivery, architecture design, performance optimization
+## Model Configuration
 
+Key parameters in `src/config.py`:
 
+- `sequence_length = 144`: Input window (24 hours at 10-min intervals)
+- `forecast_length = 12`: Prediction horizon (2 hours)
+- `hidden_size = 64`: LSTM hidden layer dimension
+- `num_layers = 2`: Number of stacked LSTM layers
+- `learning_rate = 0.001`: Adam optimizer learning rate
 
-\*\*Data Science:\*\* Time series analysis, feature engineering, statistical modeling, hypothesis testing
+## Data Sources
 
+- **River Gauges:** Flow rate measurements at 10-minute intervals
+- **Rainfall Sensors:** Precipitation data from 5 meteorological stations per gauge
+- **Spatial Data:** Station coordinates and distance calculations
+- **API Integration:** Real-time data from Israeli Meteorological Service
 
+## Evaluation Metrics
 
-\*\*Software Engineering:\*\* Production deployment, API development, automated testing, code quality
+- **Nash-Sutcliffe Efficiency (NSE):** Standard hydrological model performance
+- **Kling-Gupta Efficiency (KGE):** Balanced correlation, bias, and variability assessment
+- **NSE* (Custom):** Normalized loss function for gradient-based optimization
+- **Persistence Comparison:** Baseline against naive forecasting methods
 
+## Results
 
+The system achieves strong performance on validation datasets with:
+- Effective 2-hour advance warning for flood events
+- Robust generalization across different temporal periods
+- Real-time inference capabilities with sub-second latency
+- Systematic improvement over persistence baselines
 
-\*\*Domain Expertise:\*\* Hydrological modeling, meteorological data analysis, emergency management systems
+## Technical Notes
 
+### LSTM Architecture
+- Batch-first processing for efficient GPU utilization
+- Zero-initialized hidden states for consistent training
+- Linear output layer for direct flow rate prediction
+- Configurable depth and width for model capacity tuning
 
+### Training Pipeline
+- Temporal data splitting to prevent lookahead bias
+- Custom loss functions optimized for hydrological metrics
+- Automated validation tracking and convergence monitoring
+- Model checkpointing and training history visualization
 
----
+### Data Quality
+- Automated missing value detection and filtering
+- Temporal alignment across heterogeneous data sources
+- Statistical outlier detection and quality control
+- Distance-weighted spatial interpolation for rainfall data
 
+## Development Notes
 
-
-\*Production-ready machine learning system combining advanced neural networks with domain expertise for critical infrastructure applications. Demonstrates full-stack ML capabilities from research to deployment.\*
-
+- All models use temporal train/test splits (80/20) to maintain realistic evaluation
+- Hyperparameter tuning conducted across 125+ configuration combinations
+- Production deployment includes comprehensive error handling and logging
+- Modular architecture supports easy extension to additional gauge stations
