@@ -1,0 +1,18 @@
+python>=3.10
+
+# Core ML and Data Science
+pytorch>=1.9.0
+pandas>=1.3.0
+numpy>=1.21.0
+scipy>=1.7.0
+pyarrow>=21.0.0
+
+# Data Processing
+requests>=2.25.0
+tqdm>=4.62.0
+python-dotenv
+
+# Visualization
+matplotlib>=3.4.0
+
+
