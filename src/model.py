@@ -165,12 +165,21 @@ def KGE(y_pred, y_true):
     Returns:
         KGE coefficient (higher is better, max = 1)
     """
+
+    y_pred_flat = y_pred.flatten()
+    y_true_flat = y_true.flatten()
+
+    # Convert to numpy for correlation calculation
+    pred_np = y_pred_flat.detach().numpy()
+    true_np = y_true_flat.detach().numpy()
+
     # Calculate Pearson correlation coefficient
-    r = pearsonr(y_pred.detach().numpy(), y_true.detach().numpy())[0]
+    r = pearsonr(pred_np, true_np)[0]
+    r = torch.tensor(r)
 
     # Calculate bias ratio (alpha) and variability ratio (beta)
-    alpha = torch.std(y_pred) / torch.std(y_true)  # Variability ratio
-    beta = torch.mean(y_pred) / torch.mean(y_true)  # Bias ratio
+    alpha = torch.std(y_pred_flat) / torch.std(y_true_flat)  # Variability ratio
+    beta = torch.mean(y_pred_flat) / torch.mean(y_true_flat)  # Bias ratio
 
     # Compute KGE from correlation, variability, and bias components
     kge = 1 - torch.sqrt((r - 1) ** 2 + (alpha - 1) ** 2 + (beta - 1) ** 2)
