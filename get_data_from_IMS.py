@@ -95,7 +95,7 @@ def create_intersection_csv_from_GenerateNear(filename):
                      range(cur_df.shape[0])})
         data['gauge_id'] = gauge_id
         new_data_map = new_data_map.append(pd.DataFrame(data, index=[0]), ignore_index=True)
-    new_data_map.to_csv("gauge_IMS_intersection/intersection_1.csv", index=False)
+    new_data_map.to_csv("gauge_IMS_intersection/intersection.csv", index=False)
 
 def create_df_for_gauge_id(gauge_id, gauge_df, gauge_ims_map, not_na_dict):
     if f'il_{int(gauge_id)}' not in gauge_ims_map['gauge_id'].unique():
@@ -141,7 +141,7 @@ if __name__ == "__main__":
     # station_dfs = pd.concat(station_dfs)
     # station_dfs.to_csv("data_saved/IMS_data_final.csv", index=False)
     # create_intersection_csv_from_GenerateNear("gauge_IMS_intersection/GIS_project/il_basin_shapes_GenerateNear2_TableToExcel.csv")
-    # create_intersection_csv_from_GenerateNear("gauge_IMS_intersection/amit_final.csv")
+    # create_intersection_csv_from_GenerateNear("gauge_IMS_intersection/gis_project_generate_near_station_output.csv")
     #
     station_dfs = pd.read_csv("data_saved/IMS_data_final.csv")
     gauge_df = pd.read_csv("Hydrographs/Hydrograph_201011_201819.csv", encoding = "ISO-8859-8", parse_dates=['זמן מדידת ספיקה'])
@@ -150,7 +150,7 @@ if __name__ == "__main__":
     # # use linear interpolation on gauge_df to fill missing values
     # gauge_df = gauge_df.groupby('gauge_id').apply(lambda x: x.set_index('datetime').resample('10T').mean().interpolate(method='linear'))
     # gauge_df.reset_index(inplace=True)
-    gauge_ims_map = pd.read_csv("gauge_IMS_intersection/intersection_1.csv")
+    gauge_ims_map = pd.read_csv("gauge_IMS_intersection/intersection.csv")
     not_na_dict = {}
     for gauge_id in [2105, 5110, 7105]:
         create_df_for_gauge_id(gauge_id, gauge_df, gauge_ims_map, not_na_dict)
