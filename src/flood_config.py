@@ -24,7 +24,7 @@ class Config:
     num_layers: int = 2  # Number of LSTM layers
     learning_rate: float = 0.001  # Adam optimizer learning rate
     batch_size: int = 32  # Training batch size
-    num_epochs: int = 1  # Number of training epochs
+    num_epochs: int = 10  # Number of training epochs
 
     # Temporal parameters for time series modeling
     hours_to_forecast: int = 2  # Prediction horizon in hours
