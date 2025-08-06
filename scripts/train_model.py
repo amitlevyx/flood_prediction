@@ -93,10 +93,10 @@ def main():
     elif final_val_loss < final_train_loss:
         print("Good generalization: validation loss <= training loss")
 
-    # Save model (optional - uncomment to enable)
-    # model_path = f'models/{gauge_id}_model.pth'
-    # os.makedirs('models', exist_ok=True)
-    # save_model(model, model_path)
+    # Save model (optional - comment to disable)
+    model_path = f'models/{gauge_id}_model.pth'
+    os.makedirs('models', exist_ok=True)
+    save_model(model, model_path)
 
     # Visualize training progress
     print("Displaying training history...")
